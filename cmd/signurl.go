@@ -2,11 +2,11 @@ package cmd
 
 import (
 	"context"
-	"tshell/util"
 	"net/http"
 	"net/url"
 	"os"
 	"time"
+	"tshell/util"
 
 	logger "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -19,10 +19,10 @@ var signurlCmd = &cobra.Command{
 	Long: `Gets the signed download URL
 
 Format:
-  ./tshell signurl cos://<bucket-name>/<key> [flags]
+  ./tshell cos signurl cos://<bucket-name>/<key> [flags]
 
 Example:
-  ./tshell signurl cos://examplebucket/test.jpg -t 100`,
+  ./tshell cos signurl cos://examplebucket/test.jpg -t 100`,
 	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		time, _ := cmd.Flags().GetInt("time")
@@ -35,7 +35,7 @@ Example:
 }
 
 func init() {
-	rootCmd.AddCommand(signurlCmd)
+	cosCmd.AddCommand(signurlCmd)
 
 	signurlCmd.Flags().IntP("time", "t", 10000, "Set the validity time of the signature(Default 10000)")
 }

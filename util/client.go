@@ -4,6 +4,7 @@ import (
 	"net/http"
 
 	cdn "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn/v20180606"
+	clb "github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/clb/v20180317"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common"
 	"github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common/profile"
 	"github.com/tencentyun/cos-go-sdk-v5"
@@ -78,6 +79,28 @@ func NewCdnClient(config *Config, param *Param) *cdn.Client {
 	cpf.HttpProfile.Endpoint = "cdn.tencentcloudapi.com"
 	// 实例化要请求产品的client对象,clientProfile是可选的
 	client, _ := cdn.NewClient(credential, "", cpf)
+
+	return client
+}
+
+func NewClbClient(config *Config, param *Param) *clb.Client {
+	secretID := config.Base.SecretID
+	secretKey := config.Base.SecretKey
+	if param.SecretID != "" {
+		secretID = param.SecretID
+	}
+	if param.SecretKey != "" {
+		secretKey = param.SecretKey
+	}
+
+	// 实例化一个认证对象，入参需要传入腾讯云账户secretId，secretKey,此处还需注意密钥对的保密
+	// 密钥可前往https://console.cloud.tencent.com/cam/capi网站进行获取
+	credential := common.NewCredential(secretID, secretKey)
+	// 实例化一个client选项，可选的，没有特殊需求可以跳过
+	cpf := profile.NewClientProfile()
+	cpf.HttpProfile.Endpoint = "cdn.tencentcloudapi.com"
+	// 实例化要请求产品的client对象,clientProfile是可选的
+	client, _ := clb.NewClient(credential, "", cpf)
 
 	return client
 }

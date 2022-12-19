@@ -18,10 +18,10 @@ var lsCmd = &cobra.Command{
 	Long: `List buckets or objects
 
 Format:
-  ./tshell ls cos://<bucket-name>[/prefix/] [flags]
+  ./tshell cos ls cos://<bucket-name>[/prefix/] [flags]
 
 Example:
-  ./tshell ls cos://examplebucket/test/ -r`,
+  ./tshell cos ls cos://examplebucket/test/ -r`,
 	Args: cobra.MaximumNArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		limit, _ := cmd.Flags().GetInt("limit")
@@ -45,7 +45,7 @@ Example:
 }
 
 func init() {
-	rootCmd.AddCommand(lsCmd)
+	cosCmd.AddCommand(lsCmd)
 
 	lsCmd.Flags().Int("limit", 0, "Limit the number of objects listed(0~1000)")
 	lsCmd.Flags().BoolP("recursive", "r", false, "List objects recursively")

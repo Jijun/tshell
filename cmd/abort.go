@@ -14,10 +14,10 @@ var abortCmd = &cobra.Command{
 	Long: `Abort parts
 
 Format:
-  ./tshell abort cos://<bucket-name>[/<prefix>] [flags]
+  ./tshell cos abort cos://<bucket-name>[/<prefix>] [flags]
 
 Example:
-  ./tshell abort cos://examplebucket/test/`,
+  ./tshell cos abort cos://examplebucket/test/`,
 	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		include, _ := cmd.Flags().GetString("include")
@@ -28,7 +28,7 @@ Example:
 }
 
 func init() {
-	rootCmd.AddCommand(abortCmd)
+	cosCmd.AddCommand(abortCmd)
 
 	abortCmd.Flags().String("include", "", "List files that meet the specified criteria")
 	abortCmd.Flags().String("exclude", "", "Exclude files that meet the specified criteria")

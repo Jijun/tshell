@@ -1,9 +1,9 @@
 package cmd
 
 import (
-	"tshell/util"
 	"fmt"
 	"os"
+	"tshell/util"
 
 	"github.com/olekukonko/tablewriter"
 	logger "github.com/sirupsen/logrus"
@@ -16,10 +16,10 @@ var lspartsCmd = &cobra.Command{
 	Long: `List multipart uploads
 
 Format:
-  ./tshell lsparts cos://<bucket-name>[/<prefix>] [flags]
+  ./tshell cos lsparts cos://<bucket-name>[/<prefix>] [flags]
 
 Example:
-  ./tshell lsparts cos://examplebucket/test/`,
+  ./tshell cos lsparts cos://examplebucket/test/`,
 	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		limit, _ := cmd.Flags().GetInt("limit")
@@ -35,7 +35,7 @@ Example:
 }
 
 func init() {
-	rootCmd.AddCommand(lspartsCmd)
+	cosCmd.AddCommand(lspartsCmd)
 
 	lspartsCmd.Flags().Int("limit", 0, "Limit the number of parts listed(0~1000)")
 	lspartsCmd.Flags().String("include", "", "List files that meet the specified criteria")

@@ -1,8 +1,8 @@
 package cmd
 
 import (
-	"tshell/util"
 	"os"
+	"tshell/util"
 
 	logger "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
@@ -14,10 +14,10 @@ var hashCmd = &cobra.Command{
 	Long: `Calculate local file's hash-code or show cos file's hash-code
 
 Format:
-  ./tshell hash <file-path> [--type <hash-type>]
+  ./tshell cos hash <file-path> [--type <hash-type>]
 
 Example:
-  ./tshell hash cos://example --type md5`,
+  ./tshell cos hash cos://example --type md5`,
 	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		bucketName, path := util.ParsePath(args[0])
@@ -32,7 +32,7 @@ Example:
 }
 
 func init() {
-	rootCmd.AddCommand(hashCmd)
+	cosCmd.AddCommand(hashCmd)
 
 	hashCmd.Flags().StringP("type", "", "crc64", "Choose the hash type(md5 or crc64)")
 }

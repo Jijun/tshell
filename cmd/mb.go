@@ -18,10 +18,10 @@ var mbCmd = &cobra.Command{
 	Long: `Create bucket
 
 Format:
-  ./tshell mb cos://<bucket-name>-<appid> -e <endpoint>
+  ./tshell cos mb cos://<bucket-name>-<appid> -e <endpoint>
 
 Example:
-  ./tshell mb cos://examplebucket-1234567890 -e cos.ap-beijing.myqcloud.com`,
+  ./tshell cos mb cos://examplebucket-1234567890 -e cos.ap-beijing.myqcloud.com`,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if err := cobra.ExactArgs(1)(cmd, args); err != nil {
 			return err
@@ -38,7 +38,7 @@ Example:
 }
 
 func init() {
-	rootCmd.AddCommand(mbCmd)
+	cosCmd.AddCommand(mbCmd)
 
 	mbCmd.Flags().StringP("region", "r", "", "Region")
 	mbCmd.Flags().BoolP("ofs", "o", false, "Ofs")

@@ -25,11 +25,11 @@ Format:
 
 Example:
   Sync Upload:
-    ./tshell sync ~/example.txt cos://examplebucket/example.txt
+    ./tshell cos sync ~/example.txt cos://examplebucket/example.txt
   Sync Download:
-    ./tshell sync cos://examplebucket/example.txt ~/example.txt
+    ./tshell cos sync cos://examplebucket/example.txt ~/example.txt
   Sync Copy:
-    ./tshell sync cos://examplebucket1/example1.txt cos://examplebucket2/example2.txt`,
+    ./tshell cos sync cos://examplebucket1/example1.txt cos://examplebucket2/example2.txt`,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if err := cobra.ExactArgs(2)(cmd, args); err != nil {
 			return err
@@ -96,7 +96,7 @@ Example:
 }
 
 func init() {
-	rootCmd.AddCommand(syncCmd)
+	cosCmd.AddCommand(syncCmd)
 
 	syncCmd.Flags().BoolP("recursive", "r", false, "Synchronize objects recursively")
 	syncCmd.Flags().String("include", "", "List files that meet the specified criteria")

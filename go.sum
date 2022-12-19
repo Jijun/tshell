@@ -333,9 +333,12 @@ github.com/syndtr/goleveldb v1.0.0 h1:fBdIW9lB4Iz0n9khmH8w27SJ3QEJ7+IgjPEwGSZiFd
 github.com/syndtr/goleveldb v1.0.0/go.mod h1:ZVVdQEZoIme9iO1Ch2Jdy24qqXrMMOU6lpPAyBWyWuQ=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn v1.0.547 h1:1O1N9SMhBjpS9QrWOka0XBkNhCe4zVbKSeD2b0fT7HU=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/cdn v1.0.547/go.mod h1:tKCXYJ6a+VXHc3IWqhQuZUSg8UYabfQIhKt2aufyX4k=
+github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/clb v1.0.562 h1:msUYohsbcW6+VwBoKNXUItbAUXHsJsfbxbVHGsjEclA=
+github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/clb v1.0.562/go.mod h1:0fzM3cDwDxcFrt/7t2+NHbOfQKalCuSpHrh1Tod5c+Q=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.194/go.mod h1:7sCQWVkxcsR38nffDW057DRGk8mUjK1Ing/EFOK8s8Y=
-github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.547 h1:vpwvWpVixEIsgpUcsLcJf5jDE1jNPYivG5XEkTfIW8A=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.547/go.mod h1:7sCQWVkxcsR38nffDW057DRGk8mUjK1Ing/EFOK8s8Y=
+github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.562 h1:55rlnuRE51mKQLpUksyoBUOZMrg0mwAbueT5Rrn6UhM=
+github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/common v1.0.562/go.mod h1:7sCQWVkxcsR38nffDW057DRGk8mUjK1Ing/EFOK8s8Y=
 github.com/tencentcloud/tencentcloud-sdk-go/tencentcloud/kms v1.0.194/go.mod h1:yrBKWhChnDqNz1xuXdSbWXG56XawEq0G5j1lg4VwBD4=
 github.com/tmc/grpc-websocket-proxy v0.0.0-20190109142713-0ad062ec5ee5/go.mod h1:ncp9v5uamzpCO7NfCPTXjqaC+bZgJeR0sMTm6dMHP7U=
 github.com/xiang90/probing v0.0.0-20190116061207-43a291ad63a2/go.mod h1:UETIi67q53MR2AWcXfiuqkDkRtnGDLqkBTpCHuJHxtU=

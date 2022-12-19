@@ -19,10 +19,10 @@ var rmCmd = &cobra.Command{
 	Long: `Remove objects
 
 Format:
-  ./tshell rm cos://<bucket-name>[/prefix/] [cos://<bucket-name>[/prefix/]...] [flags]
+  ./tshell cos rm cos://<bucket-name>[/prefix/] [cos://<bucket-name>[/prefix/]...] [flags]
 
 Example:
-  ./tshell rm cos://example/test/ -r`,
+  ./tshell cos rm cos://example/test/ -r`,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if err := cobra.MinimumNArgs(1)(cmd, args); err != nil {
 			return err
@@ -49,7 +49,7 @@ Example:
 }
 
 func init() {
-	rootCmd.AddCommand(rmCmd)
+	cosCmd.AddCommand(rmCmd)
 
 	rmCmd.Flags().BoolP("recursive", "r", false, "Delete object recursively")
 	rmCmd.Flags().BoolP("force", "f", false, "Force delete")
@@ -258,7 +258,7 @@ func recursiveRemoveObject(bucketName string, cosPath string, force bool) {
 	}
 }
 
-//获取所有文件和目录
+// 获取所有文件和目录
 func getFilesAndDirs(c *cos.Client, cosDir string, nextMarker string, include string, exclude string) (files []string) {
 	objects, _, _, commonPrefixes := util.GetObjectsListIterator(c, cosDir, nextMarker, include, exclude)
 	tempFiles := make([]string, 0)

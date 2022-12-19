@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"tshell/util"
+
 	logger "github.com/sirupsen/logrus"
 	"github.com/spf13/cobra"
 	"github.com/tencentyun/cos-go-sdk-v5"
@@ -18,11 +19,11 @@ var mvCmd = &cobra.Command{
 	Long: `Move objects
 
 Format:
-  ./tshell mv <source_path> <destination_path> [flags]
+  ./tshell cos mv <source_path> <destination_path> [flags]
 
 Example: 
   Move:
-    ./tshell mv ~/example.txt cos://examplebucket/example.txt`,
+    ./tshell cos mv ~/example.txt cos://examplebucket/example.txt`,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if err := cobra.ExactArgs(2)(cmd, args); err != nil {
 			return err
@@ -62,7 +63,7 @@ Example:
 }
 
 func init() {
-	rootCmd.AddCommand(mvCmd)
+	cosCmd.AddCommand(mvCmd)
 
 	mvCmd.Flags().BoolP("recursive", "r", false, "Move objects recursively")
 	mvCmd.Flags().String("include", "", "Include files that meet the specified criteria")

@@ -19,10 +19,10 @@ var restoreCmd = &cobra.Command{
 	Long: `Restore objects
 
 Format:
-  ./tshell restore cos://<bucket-name>[/<prefix>] [flags]
+  ./tshell cos restore cos://<bucket-name>[/<prefix>] [flags]
 
 Example:
-  ./tshell restore cos://examplebucket/test/ -r -d 3 -m Expedited`,
+  ./tshell cos restore cos://examplebucket/test/ -r -d 3 -m Expedited`,
 	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		recursive, _ := cmd.Flags().GetBool("recursive")
@@ -40,7 +40,7 @@ Example:
 }
 
 func init() {
-	rootCmd.AddCommand(restoreCmd)
+	cosCmd.AddCommand(restoreCmd)
 
 	restoreCmd.Flags().BoolP("recursive", "r", false, "Restore objects recursively")
 	restoreCmd.Flags().String("include", "", "Include files that meet the specified criteria")

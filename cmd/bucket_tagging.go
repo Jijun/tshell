@@ -2,9 +2,9 @@ package cmd
 
 import (
 	"context"
-	"tshell/util"
 	"os"
 	"strings"
+	"tshell/util"
 
 	"github.com/olekukonko/tablewriter"
 	logger "github.com/sirupsen/logrus"
@@ -18,12 +18,12 @@ var bucketTaggingCmd = &cobra.Command{
 	Long: `Modify bucket tagging
 
 Format:
-	./tshell bucket-tagging --method [method] cos://<bucket-name> [tag_key]#[tag_value]
+	./tshell cos bucket-tagging --method [method] cos://<bucket-name> [tag_key]#[tag_value]
 
 Example:
-	./tshell bucket-tagging --method put cos://examplebucket tag1#test1 tag2#test2
-	./tshell bucket-tagging --method get cos://examplebucket
-	./tshell bucket-tagging --method delete cos://examplebucket`,
+	./tshell cos bucket-tagging --method put cos://examplebucket tag1#test1 tag2#test2
+	./tshell cos bucket-tagging --method get cos://examplebucket
+	./tshell cos bucket-tagging --method delete cos://examplebucket`,
 	Run: func(cmd *cobra.Command, args []string) {
 		method, _ := cmd.Flags().GetString("method")
 
@@ -53,7 +53,7 @@ Example:
 }
 
 func init() {
-	rootCmd.AddCommand(bucketTaggingCmd)
+	cosCmd.AddCommand(bucketTaggingCmd)
 	bucketTaggingCmd.Flags().String("method", "", "put/get/delete")
 }
 

@@ -12,10 +12,10 @@ var duCmd = &cobra.Command{
 	Long: `Displays the size of a bucket or objects
 
 Format:
-  ./tshell du cos://<bucket_alias>[/prefix/] [flags]
+  ./tshell cos du cos://<bucket_alias>[/prefix/] [flags]
 
 Example:
-  ./tshell du cos://examplebucket/test/`,
+  ./tshell cos du cos://examplebucket/test/`,
 	Args: cobra.ExactArgs(1),
 	Run: func(cmd *cobra.Command, args []string) {
 		bucketName, cosPath := util.ParsePath(args[0])
@@ -30,7 +30,7 @@ Example:
 }
 
 func init() {
-	rootCmd.AddCommand(duCmd)
+	cosCmd.AddCommand(duCmd)
 	duCmd.Flags().String("include", "", "List files that meet the specified criteria")
 	duCmd.Flags().String("exclude", "", "Exclude files that meet the specified criteria")
 }

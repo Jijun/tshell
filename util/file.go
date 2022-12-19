@@ -24,5 +24,4 @@ func ReadLine2Slice(file string) ([]string, error) {
 		lines = append(lines, string(line))
 	}
 	return lines, nil
-
 }

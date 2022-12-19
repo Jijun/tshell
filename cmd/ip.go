@@ -17,10 +17,10 @@ var ipCmd = &cobra.Command{
 	Long: ` IP归属查询,提供查询 IP 是否为腾讯云 CDN 加速节点的 IP，以及 IP 所在省份及运营商
 
 Format:
-  ./tshell ip [ipv4 or ipv6]
+  ./tshell cdn ip [ipv4 or ipv6]
   
 Example:
-  ./tshell ip  1.2.3.4
+  ./tshell cdn ip  1.2.3.4
   `,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if err := cobra.MinimumNArgs(1)(cmd, args); err != nil {
@@ -34,7 +34,7 @@ Example:
 }
 
 func init() {
-	rootCmd.AddCommand(ipCmd)
+	cdnCmd.AddCommand(ipCmd)
 }
 
 func ip2geo(args []string) {

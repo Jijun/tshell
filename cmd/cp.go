@@ -20,15 +20,15 @@ var cpCmd = &cobra.Command{
 	Long: `Upload, download or copy objects
 
 Format:
-  ./tshell cp <source_path> <destination_path> [flags]
+  ./tshell cos cp <source_path> <destination_path> [flags]
 
 Example: 
   Upload:
-    ./tshell cp ~/example.txt cos://examplebucket/example.txt
+    ./tshell cos cp ~/example.txt cos://examplebucket/example.txt
   Download:
-    ./tshell cp cos://examplebucket/example.txt ~/example.txt
+    ./tshell cos cp cos://examplebucket/example.txt ~/example.txt
   Copy:
-    ./tshell cp cos://examplebucket1/example1.txt cos://examplebucket2/example2.txt`,
+    ./tshell cos cp cos://examplebucket1/example1.txt cos://examplebucket2/example2.txt`,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if err := cobra.ExactArgs(2)(cmd, args); err != nil {
 			return err
@@ -83,7 +83,7 @@ Example:
 }
 
 func init() {
-	rootCmd.AddCommand(cpCmd)
+	cosCmd.AddCommand(cpCmd)
 
 	cpCmd.Flags().BoolP("recursive", "r", false, "Copy objects recursively")
 	cpCmd.Flags().String("include", "", "Include files that meet the specified criteria")
