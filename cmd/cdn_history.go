@@ -37,11 +37,9 @@ Example:
 		keyword, _ := cmd.Flags().GetString("keyword")
 		taskId, _ := cmd.Flags().GetString("taskId")
 		if flushType == "url" || flushType == "path" {
-			queryRefresh(args, keyword, taskId, start, end, limit, offset)
+			queryRefresh(args, keyword, taskId, start, end, flushType, limit, offset)
 		} else if flushType == "push" {
 			queryPush(args, keyword, taskId, start, end, limit, offset)
-		} else {
-			queryRefresh(args, keyword, taskId, start, end, limit, offset)
 		}
 	},
 }
@@ -59,7 +57,7 @@ func init() {
 
 }
 
-func queryRefresh(args []string, keyword, taskId, start, end string, limit, offset int64) {
+func queryRefresh(args []string, keyword, taskId, start, end, flushType string, limit, offset int64) {
 	req := cdn.NewDescribePurgeTasksRequest()
 	if taskId != "" {
 		req.TaskId = common.StringPtr(taskId)
@@ -79,6 +77,7 @@ func queryRefresh(args []string, keyword, taskId, start, end string, limit, offs
 	req.EndTime = common.StringPtr(end)
 	req.Limit = common.Int64Ptr(limit)
 	req.Offset = common.Int64Ptr(offset)
+	req.PurgeType = common.StringPtr(flushType)
 
 	c := util.NewCdnClient(&config, &param)
 	res, err := c.DescribePurgeTasks(req)
